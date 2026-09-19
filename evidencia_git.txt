@@ -1,0 +1,5 @@
+056a2ee (HEAD -> desarrollo) fix: corrige calculo de minutos en tarifa por hora
+3e4daa5 feat: agrega logica de descuento por horario nocturno
+fa139e8 feat: implementa calculo de tarifa segun tipo de usuario
+fe489fd feat: agrega lectura de datos del vehiculo
+d02afa8 (main) docs: agrega README y gitignore
