@@ -73,6 +73,7 @@ while contador < N and total_validos < CAPACIDAD:
         descuento = tarifa * 0.10
 
     total_pagar = tarifa - descuento
+    total_pagar = round(total_pagar, 2)
 
     total_validos = total_validos + 1
     total_recaudado = total_recaudado + total_pagar
