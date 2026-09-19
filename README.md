@@ -1,0 +1,2 @@
+# PARCIAL-1.
+La_T
