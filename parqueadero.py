@@ -66,8 +66,16 @@ while contador < N and total_validos < CAPACIDAD:
         else:
             tarifa = 1500.0 + (horas - 1) * 1200.0
 
+    es_nocturno = hora_entrada > 19 or hora_entrada < 6
+
+    descuento = 0.0
+    if es_nocturno:
+        descuento = tarifa * 0.10
+
+    total_pagar = tarifa - descuento
+
     total_validos = total_validos + 1
-    total_recaudado = total_recaudado + tarifa
+    total_recaudado = total_recaudado + total_pagar
     total_horas_validas = total_horas_validas + horas
 
     print("\nRegistro aceptado.")
@@ -76,4 +84,33 @@ while contador < N and total_validos < CAPACIDAD:
     print("Horas:", horas)
     if tipo_original != tipo:
         print("Tipo ingresado:", tipo_original, "(convertido a Visitante)")
-    print("Tarifa:", round(tarifa, 2), "COP")
+    if es_nocturno:
+        print("Descuento nocturno: 10%")
+    else:
+        print("Descuento nocturno: no aplica")
+    print("Tarifa antes del descuento: $", round(tarifa, 2), "COP")
+    print("Descuento: $", round(descuento, 2), "COP")
+    print("Total a pagar: $", total_pagar, "COP")
+
+if total_validos == CAPACIDAD and contador < N:
+    print("\nPARQUEADERO LLENO")
+
+print("\n========================================")
+print("         ESTADISTICAS FINALES")
+print("========================================")
+print("Total de vehiculos validos:", total_validos)
+print("Total recaudado: $", round(total_recaudado, 2), "COP")
+print("Cantidad de estudiantes:", cantidad_estudiantes)
+print("Cantidad de docentes:", cantidad_docentes)
+print("Cantidad de visitantes:", cantidad_visitantes)
+
+if total_validos > 0:
+    promedio_horas = total_horas_validas / total_validos
+else:
+    promedio_horas = 0.0
+
+porcentaje_ocupacion = (total_validos / CAPACIDAD) * 100
+
+print("Promedio de horas de permanencia:", round(promedio_horas, 2))
+print("Porcentaje de ocupacion:", round(porcentaje_ocupacion, 2), "%")
+print("========================================")
